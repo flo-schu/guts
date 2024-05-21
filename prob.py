@@ -73,7 +73,7 @@ def halfnormal_prior(name, loc, scale, normal_base=False):
     return prior
 
 
-def model_guts_reduced(solver, obs, masks):
+def model_guts_reduced(solver, obs, masks, only_prior=False):
     """Probability model with substance specific parameters and a conditional 
     binomial probability model for survival. 
 
@@ -116,6 +116,9 @@ def model_guts_reduced(solver, obs, masks):
     h_b     = lognormal_prior(name="h_b",    loc=[1e-8, 1e-8, 1e-8], scale=2, normal_base=True)
     kk      = lognormal_prior(name="kk",     loc=[0.02 , 0.02 , 0.02 ], scale=2, normal_base=True)
     
+    if only_prior:
+        return
+
     # deterministic computations
     theta = {
         "k_d": k_d,
@@ -148,7 +151,7 @@ def model_guts_reduced(solver, obs, masks):
     )
 
 
-def model_guts_scaled_damage(solver, obs, masks):
+def model_guts_scaled_damage(solver, obs, masks, only_prior=False):
     """Probability model with substance specific parameters and a conditional 
     binomial probability model for survival. 
 
@@ -199,6 +202,9 @@ def model_guts_scaled_damage(solver, obs, masks):
     # error model sigmas
     sigma_cint = halfnormal_prior(name="sigma_cint", loc=0, scale=[5, 5, 5], normal_base=True)
 
+    if only_prior:
+        return
+
     # deterministic computations
     theta = {
         "k_i": k_i,
@@ -237,7 +243,7 @@ def model_guts_scaled_damage(solver, obs, masks):
     )
 
 
-def model_guts_full(solver, obs, masks):
+def model_guts_full(solver, obs, masks, only_prior=False):
     """Probability model with substance specific parameters and a conditional 
     binomial probability model for survival. 
 
@@ -290,6 +296,9 @@ def model_guts_full(solver, obs, masks):
     # error model sigmas
     sigma_cint = halfnormal_prior(name="sigma_cint", loc=0, scale=[5, 5, 5], normal_base=True)
     sigma_nrf2 = halfnormal_prior(name="sigma_nrf2", loc=0, scale=[5, 5, 5], normal_base=True)
+
+    if only_prior:
+        return
 
     # deterministic computations
     theta = {

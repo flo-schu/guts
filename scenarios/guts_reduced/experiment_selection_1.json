@@ -1,0 +1,16 @@
+{
+    "cext": {
+        "substances": {
+            "diuron": {"experiment_ids": [19]},
+            "diclofenac": {"experiment_ids": [12]},
+            "naproxen": {"experiment_ids": [26]}
+        }
+    },
+    "survival": {
+        "substances": {
+            "diuron": {"experiment_ids": [44]},
+            "diclofenac": {"experiment_ids": [41]},
+            "naproxen": {"experiment_ids": [47]}
+        }
+    }
+}

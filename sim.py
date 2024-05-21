@@ -540,8 +540,8 @@ class SingleSubstanceSim2(SingleSubstanceSim):
 
 if __name__ == "__main__":
     config = prepare_casestudy((
-        "tktd-rna-pulse", 
-        "rna_pulse_3_6c_substance_independent_rna_protein_module"), 
+        "guts", 
+        "guts_reduced"), 
         "settings.cfg"
     )
     
