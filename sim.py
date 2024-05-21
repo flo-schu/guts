@@ -426,16 +426,18 @@ class SingleSubstanceSim(Simulation):
         self.load_functions()
 
         observations = self.load_observations()
-        obs_export = unlist_attrs(self.observations)
-        obs_export.to_netcdf(f"{self.data_path}/dataset.nc")
+        observations, indices = self.reshape_observations(observations)
+        
+        # export observations
+        obs_export = unlist_attrs(observations)
+        os.makedirs(self.data_path, exist_ok=True)
         obs_export.to_dataframe().reset_index()[[
             "id", "treatment_id", "experiment_id", "nzfe", "hpf", "substance", 
-            "cext_nom", "survivors_before_t", "time", "cext", "cint", "nrf2", 
-            "survival", "lethality"
+            "cext_nom", "time", "cext", "cint", "nrf2", 
+            "lethality"
         ]].to_csv(f"{self.data_path}/dataset.csv")
-
         observations = enlist_attr(observations, "substance")
-        observations, indices = self.reshape_observations(observations)
+
         observations = self.postprocess_observations(observations)
         self.observations = observations
         self.indices = indices
