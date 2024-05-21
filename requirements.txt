@@ -1,0 +1,8 @@
+pymob[numpyro]==0.3.3
+expyDB==0.3.3
+openpyxl==3.1.2
+ipykernel==6.26.0
+ipywidgets==8.1.1
+tqdm==4.65.2
+bottleneck==1.3.7
+jupyterlab
