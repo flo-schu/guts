@@ -21,11 +21,14 @@ conda install python=3.11
 pip install -r requirements.txt
 ```
 
-download the existing results datasets
+download the existing results datasets and unlock the results dataset to be
+able to re-compute results. If you mess anything up, just delete the whole dataset
+and download again.
 
 ```bash
-datalad clone git@gin.g-node.org:/flo-schu/guts__results.git results
 datalad clone git@gin.g-node.org:/flo-schu/tktd_nrf2_zfe__data.git data
+datalad clone git@gin.g-node.org:/flo-schu/guts__results.git results
+datalad unlock case_studies/guts/results
 ```
 
 if this is not possible create a new dataset with `datalad create -c text2git results` (see section below)
